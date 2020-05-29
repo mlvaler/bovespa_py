@@ -1,0 +1,47 @@
+# bibliotecas a serem importadas
+import pandas as pd
+from pandas_datareader import data as web
+import plotly.graph_objects as go
+ 
+# criar um DataFrame vazio para receber os valores posteriormente
+df = pd.DataFrame()
+
+# escolher a ação desejada, acompanhada da terminação .SA
+acao = 'MGLU3.SA'
+
+# importar dados para o DataFrame selecionando o período de início da exibição - no caso, 01-01-2018
+df = web.DataReader(acao, data_source='yahoo', start='01-01-2018')
+
+# ver a "cabeça" do arquivo
+df.head()
+
+# definindo as configs
+trace1 = {
+    'x': df.index,
+    'open': df.Open,
+    'close': df.Close,
+    'high': df.High,
+    'low': df.Low,
+    'type': 'candlestick',
+    'name': acao,
+    'showlegend': True
+}
+
+data = [trace1]
+layout = go.Layout()
+ 
+acoes = go.Figure(data=data, layout=layout)
+
+# aqui vão algumas atualizações para adicionar a linha de destaque
+acoes.update_layout(
+    title='Reflexo da pandemia COVID-19',
+    shapes = [dict(
+        x0='2020-02-26', x1='2020-02-26', y0=0, y1=1, xref='x', yref='paper',
+        line_width=2)],
+    annotations=[dict(
+        x='2020-02-26', y=0.05, xref='x', yref='paper',
+        showarrow=False, xanchor='left', text='Início da Covid')]
+)
+
+# exibe
+acoes.show()
