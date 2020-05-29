@@ -4,6 +4,6 @@
 
 #### Python solution to get information from Yahoo Finance on companies listed in brazilian stock market with a mark at the begining of pandemic period in Brazil
 
-![Demo](demo/demo.gif)
+![Demo](demo.gif)
 
 ###### Libs: Pandas (pandas_datareader), Plotly (graph_objects)
