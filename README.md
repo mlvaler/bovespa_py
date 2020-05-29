@@ -1,4 +1,4 @@
-# Exibindo performance de empresas da bolsa
+# Exibindo reflexo de performance de empresas da bolsa com a pandemia
 
 ## Solução em Python para obter dados do Yahoo Finance, das empresas listadas na bolsa de valores brasileira com destaque para o início do período de pandemia pós-carnaval
 
